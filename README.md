@@ -98,7 +98,7 @@ example.  The `-a` and `-e` options work similarly, but _modify_ the
 default keyword set rather than replacing it.
 
 Note that only _active_ keywords are found, not any that have been
-'commented out' (see 'grep' mode for this).
+commented out (see 'grep' mode for this).
 
 With the `-o` option, the results are saved to a spreadsheet.  The top
 row is a header row, then there is one row for each keyword instance,
@@ -278,7 +278,8 @@ EaseGill-Pippikin data set, as well as the Dow-Prov case.
 * Intercept `case preserve|toupper|tolower` and interpret accordingly.
 
 If there are issues parsing survex files with these scripts, please
-let me know!  Also, feel free to request additional features.
+let me know!  
+Also, feel free to request/suggest additional features.
 
 ### Copying
 
