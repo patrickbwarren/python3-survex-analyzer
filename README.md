@@ -79,6 +79,7 @@ options:
   -i, --ignore-case          ignore case (when in grep mode)
   -n, --no-ignore-case       preserve case (when in keyword mode)
   -x, --context              include survex context in printed results
+  -y, --omit-linen           omit line numbers in output
   -c, --color                colorize printed results
   -q, --quiet                only print errors (in case of -o only)
   -o, --output               (optional) output to spreadsheet (.ods, .xlsx)
