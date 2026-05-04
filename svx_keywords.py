@@ -183,7 +183,7 @@ if __name__ == "__main__":
     parser.add_argument('-i', '--ignore-case', action='store_true', help='ignore case (when in grep mode)')
     parser.add_argument('-n', '--no-ignore-case', action='store_true', help='preserve case (when in keyword mode)')
     parser.add_argument('-x', '--context', action='store_true', help='include survex context in printed results')
-    parser.add_argument('-y', '--omit-line-numbers', action='store_true', help='omit line numbers in output')
+    parser.add_argument('-y', '--omit-linen', action='store_true', help='omit line numbers in output')
     parser.add_argument('-c', '--color', action='store_true', help='colorize printed results')
     parser.add_argument('-q', '--quiet', action='store_true', help='only print errors (in case of -o only)')
     parser.add_argument('-o', '--output', help='(optional) output to spreadsheet (.ods, .xlsx)')
@@ -197,12 +197,12 @@ if __name__ == "__main__":
             entered = '<entered>' # ensure consistency
             if args.color:
                 context = f'{BLUE}{context}{CYAN}' if context else ''
-                if args.omit_line_numbers:
+                if args.omit_linen:
                     postscript = f'{PURPLE}{path}{CYAN}:{BLUE}{context}:{RED}{entered}{NC}'
                 else:
                     postscript = f'{PURPLE}{path}{CYAN}:{GREEN}0{CYAN}:{BLUE}{context}:{RED}{entered}{NC}'
             else:
-                if args.omit_line_numbers:
+                if args.omit_linen:
                     postscript = f'{path}:{context}:{entered}'
                 else:
                     postscript = f'{path}:0:{context}:{entered}'
@@ -228,14 +228,14 @@ if __name__ == "__main__":
                     record_context = '.'.join(record.context)
                     if args.color:
                         context = f'{BLUE}{record_context}{CYAN}' if args.context else ''
-                        if args.omit_line_numbers:
+                        if args.omit_linen:
                             line = f'{PURPLE}{record_path}{CYAN}:{BLUE}{context}{CYAN}:{NC}{record_text}'
                         else:
                             line = f'{PURPLE}{record_path}{CYAN}:{GREEN}{record.line}{CYAN}:{BLUE}{context}{CYAN}:{NC}{record_text}'
                         line = line.replace(match, f'{RED}{match}{NC}')
                     else:
                         context = record_context if args.context else ''
-                        if args.omit_line_numbers:
+                        if args.omit_linen:
                             line = f'{record_path}:{context}:{record_text}'
                         else:
                             line = f'{record_path}:{record.line}:{context}:{record_text}'
@@ -283,7 +283,7 @@ if __name__ == "__main__":
                     else:
                         if args.color:
                             context = f'{BLUE}{record_context}{CYAN}' if args.context else ''
-                            if args.omit_line_numbers:
+                            if args.omit_linen:
                                 line = f'{PURPLE}{record_path}{CYAN}:{BLUE}{context}{CYAN}:{NC}{record_text}'
                             else:
                                 line = f'{PURPLE}{record_path}{CYAN}:{GREEN}{record.line}{CYAN}:{BLUE}{context}{CYAN}:{NC}{record_text}'
@@ -292,7 +292,7 @@ if __name__ == "__main__":
                             line = line.replace(f'{NC}{RED}', f'{RED}') # simplify
                         else:
                             context = record_context if args.context else ''
-                            if args.omit_line_numbers:
+                            if args.omit_linen:
                                 line = f'{record_path}:{context}:{record_text}'
                             else:
                                 line = f'{record_path}:{record.line}:{context}:{record_text}'
